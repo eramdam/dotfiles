@@ -1,0 +1,5 @@
+#!/bin/bash
+link="$1"
+echo -n $(youtube-dl --get-id $link) $(youtube-dl -e $link)
+echo mpc add `youtube-dl -x -g $link`
+mpc add `youtube-dl -x -g $link`
