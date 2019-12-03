@@ -55,8 +55,8 @@ toolbarbutton#alltabs-button {
 
 /* Hide/re-order the menu button. */
 #PanelUI-button {
-  overflow: hidden;
-  width: 0;
+/*   overflow: hidden; */
+/*   width: 0; */
 /*   display: none !important; */
 }
 
@@ -228,5 +228,6 @@ toolbarbutton#alltabs-button {
 /* Move traffic lights in the space carved above. */
 .titlebar-buttonbox-container {
   position: absolute;
-  margin-top: -42px
+  display: block;
+  margin-top: -40px
 }
