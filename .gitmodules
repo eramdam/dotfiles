@@ -16,3 +16,9 @@
 [submodule "bin/core/z"]
 	path = bin/core/z
 	url = https://github.com/rupa/z/
+[submodule "zsh-custom/plugins/k"]
+	path = zsh-custom/plugins/k
+	url = https://github.com/supercrabtree/k
+[submodule "zsh-custom/plugins/zsh-nvm"]
+	path = zsh-custom/plugins/zsh-nvm
+	url = https://github.com/lukechilds/zsh-nvm

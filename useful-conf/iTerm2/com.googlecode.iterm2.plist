@@ -759,6 +759,8 @@
 	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
+	<key>DisableWindowSizeSnap</key>
+	<true/>
 	<key>EliminateCloseButtons</key>
 	<true/>
 	<key>EnableDivisionView</key>
@@ -977,11 +979,11 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>0 124 224 275 0 0 3840 2160 </string>
+	<string>0 123 224 275 0 0 3840 2160 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>1370 1134 620 392 0 0 3360 1890 </string>
+	<string>3970 544 700 622 3360 201 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-1639 72 1596 959 -1680 26 1680 1050 </string>
+	<string>151 194 1510 754 0 0 3360 1890 </string>
 	<key>NeverWarnAboutShortLivedSessions_997E47F7-6467-4862-A26D-E4FCA1E71EB2</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_997E47F7-6467-4862-A26D-E4FCA1E71EB2_selection</key>
@@ -1334,9 +1336,9 @@
 			<key>Cursor Type</key>
 			<integer>2</integer>
 			<key>Custom Command</key>
-			<string>No</string>
+			<string>Yes</string>
 			<key>Custom Directory</key>
-			<string>Recycle</string>
+			<string>Advanced</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Disable Printing</key>
@@ -5133,22 +5135,33 @@
 	<array>
 		<string>3.3.7beta4</string>
 		<string>3.3.7beta2</string>
+		<string>3.3.8beta1</string>
+		<string>3.3.8beta4</string>
 		<string>3.3.7beta3</string>
-		<string>3.3.6</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
+	<integer>0</integer>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{-1680, 26}, {1680, 1050}}</string>
+		<string>{{3360, 201}, {1920, 1080}}</string>
 		<key>topLeft</key>
-		<string>{-1411, 621}</string>
+		<string>{3574, 1022}</string>
 	</dict>
+	<key>NoSyncHaveUsedCopyMode</key>
+	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>8F13AB64-D659-44BD-83A4-F7B45438A25F</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>320</integer>
+	<integer>103</integer>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
 	<real>594187572.269858</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
@@ -5901,15 +5914,10 @@
 			</dict>
 		</array>
 	</dict>
-	<key>NoSyncSearchHistory2</key>
-	<array>
-		<string>reminderforall:</string>
-		<string>share</string>
-		<string>shad</string>
-		<string>invite</string>
-		<string>answermode</string>
-		<string>message</string>
-	</array>
+	<key>NoSyncSuppressDownloadConfirmation</key>
+	<true/>
+	<key>NoSyncSuppressDownloadConfirmation_selection</key>
+	<integer>0</integer>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
 	<real>593840065.32960105</real>
 	<key>OnlyWhenMoreTabs</key>
@@ -5996,7 +6004,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-11-20T17:34:10Z</date>
+	<date>2020-01-08T02:55:34Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -8427,7 +8435,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.7beta4</string>
+	<string>3.3.8beta4</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
