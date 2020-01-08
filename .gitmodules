@@ -1,24 +1,9 @@
-[submodule "symfiles/oh-my-zsh.symlink"]
-	path = symfiles/oh-my-zsh.symlink
-	url = https://github.com/robbyrussell/oh-my-zsh
-[submodule "bin/core/k"]
-	path = bin/core/k
-	url = git@github.com:supercrabtree/k.git
-[submodule "symfiles/zsh.symlink/zsh-autosuggestions"]
-	path = symfiles/zsh.symlink/zsh-autosuggestions
-	url = git://github.com/tarruda/zsh-autosuggestions
-[submodule "symfiles/zsh.symlink/zsh-syntax-highlighting"]
-	path = symfiles/zsh.symlink/zsh-syntax-highlighting
-	url = git://github.com/jimmijj/zsh-syntax-highlighting
-[submodule "symfiles/powerline.symlink"]
-	path = symfiles/powerline.symlink
-	url = git://github.com/powerline/powerline
-[submodule "bin/core/z"]
-	path = bin/core/z
-	url = https://github.com/rupa/z/
 [submodule "zsh-custom/plugins/k"]
 	path = zsh-custom/plugins/k
 	url = https://github.com/supercrabtree/k
 [submodule "zsh-custom/plugins/zsh-nvm"]
 	path = zsh-custom/plugins/zsh-nvm
 	url = https://github.com/lukechilds/zsh-nvm
+[submodule "zsh-custom/plugins/zsh-autosuggestions"]
+	path = zsh-custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
