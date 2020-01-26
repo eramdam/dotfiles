@@ -55,13 +55,13 @@ toolbarbutton#alltabs-button {
 
 /* Hide/re-order the menu button. */
 #PanelUI-button {
-/*   overflow: hidden; */
-/*   width: 0; */
-/*   display: none !important; */
+  /*   overflow: hidden; */
+  /*   width: 0; */
+  /*   display: none !important; */
 }
 
 #appMenu-notification-popup {
-/*   position: fixed; */
+  /*   position: fixed; */
   margin-top: 90px;
   margin-right: 20px !important;
 }
@@ -69,7 +69,7 @@ toolbarbutton#alltabs-button {
 #appMenu-notification-popup .panel-arrowbox {
   display: none !important;
   visibility: collapse;
-  
+
 }
 
 /* #PanelUI-button, */
@@ -185,16 +185,6 @@ toolbarbutton#alltabs-button {
 }
 
 
-/* Requires https://addons.mozilla.org/en-US/firefox/addon/tab-count-in-window-title/ */
-/* Hides tab bar when there's only one tab. */
-#main-window[titlepreface^="[1] "] .toolbar-items {
-  visibility: collapse;
-}
-
-#main-window[titlepreface^="[1] "] #TabsToolbar {
-  min-height: 0 !important;
-}
-
 #navigator-toolbox[readeractive="true"] {
   box-shadow: none !important;
 }
@@ -230,4 +220,82 @@ toolbarbutton#alltabs-button {
   position: absolute;
   display: block;
   margin-top: -42px
+}
+
+#PanelUI-webext-privacy_privacy_com-browser-action-view {
+  min-width: 500px !important;
+  ;
+}
+
+/* HIDE TAB BAR WITH ONLY ONE TAB */
+
+:root[sizemode="normal"] #nav-bar {
+  --uc-window-drag-space-width: 20px
+}
+
+#titlebar {
+  -moz-appearance: none !important;
+}
+
+#tabbrowser-tabs,
+#tabbrowser-tabs>.tabbrowser-arrowscrollbox {
+  min-height: 0 !important;
+}
+
+:root:not([customizing]) #tabbrowser-tabs .tabs-newtab-button,
+:root:not([customizing]) #tabs-newtab-button,
+:root:not([customizing]) #TabsToolbar-customization-target>.toolbarbutton-1,
+:root:not([customizing]) #TabsToolbar .titlebar-button {
+  -moz-appearance: none !important;
+  height: 0px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  -moz-box-align: stretch;
+  margin: 0 !important;
+}
+
+#TabsToolbar {
+  min-height: 0 !important;
+}
+
+:root:not([customizing]) #TabsToolbar-customization-target>.toolbarbutton-1>.toolbarbutton-icon {
+  padding-block: 0px !important;
+  max-height: 28px;
+  height: 20px !important
+}
+
+#tabbrowser-tabs .tabbrowser-tab {
+  height: var(--tab-min-height)
+}
+
+html:not([privatebrowsingmode="temporary"]) #tabbrowser-tabs .tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"],
+html:not([privatebrowsingmode="temporary"])  #tabbrowser-tabs .tabbrowser-tab[first-visible-tab="true"][last-visible-tab="true"] + #tabs-newtab-button {
+  visibility: collapse !important;
+}
+
+/* Button re-styling */
+#tabs-newtab-button:hover,
+#tabbrowser-tabs .tabs-newtab-button:hover {
+  background-color: var(--toolbarbutton-hover-background)
+}
+
+#tabs-newtab-button>.toolbarbutton-icon,
+#tabbrowser-tabs .tabs-newtab-button>.toolbarbutton-icon {
+  padding: 0 !important;
+  transform: scale(0.6);
+  background-color: transparent !important;
+}
+
+/* Extra top padding  in maximized window */
+:root[sizemode="maximized"] #navigator-toolbox {
+  padding-top: 7px !important;
+}
+
+/* Fix window controls not being clickable */
+:root[tabsintitlebar] #toolbar-menubar[autohide="true"][inactive] {
+  transition: height 0ms steps(1) 80ms;
+}
+
+#nav-bar {
+  border-inline: var(--uc-window-drag-space-width) solid var(--toolbar-bgcolor);
 }
