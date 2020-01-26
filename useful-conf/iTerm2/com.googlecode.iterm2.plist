@@ -12,6 +12,8 @@
 	<false/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -981,9 +983,9 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>0 123 224 275 0 0 3840 2160 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>3970 544 700 622 3360 201 1920 1080 </string>
+	<string>1570 1147 700 622 0 0 3840 2137 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>151 194 1510 754 0 0 3360 1890 </string>
+	<string>4332 999 464 502 3840 468 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_997E47F7-6467-4862-A26D-E4FCA1E71EB2</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_997E47F7-6467-4862-A26D-E4FCA1E71EB2_selection</key>
@@ -5138,6 +5140,7 @@
 		<string>3.3.8beta1</string>
 		<string>3.3.8beta4</string>
 		<string>3.3.7beta3</string>
+		<string>3.3.8beta5</string>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
@@ -5157,7 +5160,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>8F13AB64-D659-44BD-83A4-F7B45438A25F</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>103</integer>
+	<integer>128</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -6004,7 +6007,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-01-08T02:55:34Z</date>
+	<date>2020-01-21T03:09:20Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>
@@ -8435,7 +8438,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.8beta4</string>
+	<string>3.3.8beta5</string>
 	<key>kCPFavoritesUserDefaultsKey</key>
 	<array>
 		<data>
@@ -9369,6 +9372,8 @@
 	<key>mad_menuAndDockSettings</key>
 	<integer>1</integer>
 	<key>preferIntegratedGPU</key>
+	<true/>
+	<key>wb_moreMenu_hide</key>
 	<true/>
 </dict>
 </plist>
