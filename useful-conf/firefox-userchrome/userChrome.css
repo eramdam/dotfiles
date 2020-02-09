@@ -230,37 +230,39 @@ toolbarbutton#alltabs-button {
   min-width: 500px !important;
 }
 
+/**
+  VIBRANCY
+**/
 
-/* Vibrancy stuff */
-/* #TabsToolbar, #nav-bar {
+#TabsToolbar, .tab-background, #nav-bar, .theme-dark,
+.theme-light,slider, .CodeMirror, .devtools-toolbar, .message,
+.theme-body, .table-widget-empty-text {
   -moz-appearance: -moz-mac-vibrancy-dark !important;
 }
 
-.tabbrowser-tab[visuallyselected="true"] .tab-background {
-  background: transparent !important;
-} */
-
-/* hide tab bar if only one tab */
-tab:only-of-type { 
-    display:none; 
+#TabsToolbar {
+  position: relative;
+  z-index: 1;
 }
 
-/* unset the tab bar min-height */ 
-#tabbrowser-tabs, #tabbrowser-tabs > .tabbrowser-arrowscrollbox, #tabbrowser-tabs[positionpinnedtabs] > .tabbrowser-tab[pinned], #TabsToolbar {
-    min-height: initial !important;
+#TabsToolbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.3);
+  background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.3));
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
-/* set the height on the tabs instead */
-tab { 
-    line-height: 28px; height: 28px; 
+.tabbrowser-tab .tab-background-inner {
+/*   background: rgba(0,0,0,.1); */
+     background-image: linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.2));
 }
 
-/* hide new tab button so tab-bar can collapse */
-tab:only-of-type ~ #tabs-newtab-button, tab:only-of-type ~ #titlebar-secondary-buttonbox { 
-    display: none; 
-}
-
-/* ...but show it on tab-bar hover */
-#tabbrowser-tabs:hover .tabs-newtab-button { 
-    display: block; 
+.tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
+ background-color: transparent;
+ background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.1))
 }
