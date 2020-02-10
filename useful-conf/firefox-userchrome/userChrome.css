@@ -21,6 +21,9 @@ toolbarbutton#alltabs-button {
   --toolbox-border-bottom-color: rgba(0, 0, 0, 0) !important;
 }
 
+
+
+
 :-moz-any(.tabs-newtab-button, #new-tab-button, #alltabs-button) .toolbarbutton-icon {
   transform: scale(0.5, 0.5) !important;
   margin-top: 1px !important;
@@ -55,13 +58,13 @@ toolbarbutton#alltabs-button {
 
 /* Hide/re-order the menu button. */
 #PanelUI-button {
-/*   overflow: hidden; */
-/*   width: 0; */
-/*   display: none !important; */
+  /*   overflow: hidden; */
+  /*   width: 0; */
+  /*   display: none !important; */
 }
 
 #appMenu-notification-popup {
-/*   position: fixed; */
+  /*   position: fixed; */
   margin-top: 90px;
   margin-right: 20px !important;
 }
@@ -69,7 +72,7 @@ toolbarbutton#alltabs-button {
 #appMenu-notification-popup .panel-arrowbox {
   display: none !important;
   visibility: collapse;
-  
+
 }
 
 /* #PanelUI-button, */
@@ -144,7 +147,7 @@ toolbarbutton#alltabs-button {
 }
 
 /* Spacing. */
-#TabsToolbar .titlebar-placeholder[type="pre-tabs"] {
+#sToolbar .titlebar-placeholder[type="pre-tabs"] {
   width: 1.22em !important;
   border-right: none !important;
 }
@@ -185,16 +188,6 @@ toolbarbutton#alltabs-button {
 }
 
 
-/* Requires https://addons.mozilla.org/en-US/firefox/addon/tab-count-in-window-title/ */
-/* Hides tab bar when there's only one tab. */
-#main-window[titlepreface^="[1] "] .toolbar-items {
-  visibility: collapse;
-}
-
-#main-window[titlepreface^="[1] "] #TabsToolbar {
-  min-height: 0 !important;
-}
-
 #navigator-toolbox[readeractive="true"] {
   box-shadow: none !important;
 }
@@ -221,6 +214,7 @@ toolbarbutton#alltabs-button {
 
 #tracking-protection-icon-container {
   border-image-slice: initial;
+  border: none;
   padding: 0 4px;
 }
 
@@ -230,4 +224,45 @@ toolbarbutton#alltabs-button {
   position: absolute;
   display: block;
   margin-top: -42px
+}
+
+#PanelUI-webext-privacy_privacy_com-browser-action-view {
+  min-width: 500px !important;
+}
+
+/**
+  VIBRANCY
+**/
+
+#TabsToolbar, .tab-background, #nav-bar, .theme-dark,
+.theme-light,slider, .CodeMirror, .devtools-toolbar, .message,
+.theme-body, .table-widget-empty-text {
+  -moz-appearance: -moz-mac-vibrancy-dark !important;
+}
+
+#TabsToolbar {
+  position: relative;
+  z-index: 1;
+}
+
+#TabsToolbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.3);
+  background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.3));
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.tabbrowser-tab .tab-background-inner {
+/*   background: rgba(0,0,0,.1); */
+     background-image: linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.2));
+}
+
+.tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
+ background-color: transparent;
+ background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.1))
 }
