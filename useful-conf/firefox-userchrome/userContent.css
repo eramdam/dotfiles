@@ -16,3 +16,20 @@
     border: 0 !important;
   }
 }
+
+@-moz-document url-prefix(about:newtab), url-prefix(about:home) {
+ 
+  .ds-outer-wrapper-breakpoint-override main {
+    max-width: 1042px !important;
+    width: 100% !important;
+  }
+  
+  .prefs-button {
+    display: none !important;
+  }
+  
+  .ds-outer-wrapper-breakpoint-override:not(.fixed-search) .search-wrapper .search-inner-wrapper {
+    max-width: 736px !important;
+    width: 100% !important;
+  }
+}
