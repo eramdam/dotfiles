@@ -1,13 +1,12 @@
 # dotfiles
 
-Dotfiles. Do what you want with that
+Collection of actually-not-dot files. I've switched to using [mackup](https://github.com/lra/mackup) for some years now for the actual dotfiles sync/backup.
 
 # Wait, what the globe are all these files ?
 
-+ `bin/core` gets the main scripts
-+ `bin/usr` gets the custom scripts (mainly used by alias of all sorts)
-+ `symfiles` every file/folder with a `.symlink` extension in there will be symlinked in `$HOME` 
-+ `useful-conf` some stuff that can't really be automated by some ways
++ `bin/core` gets the main scripts.
++ `bin/usr` gets the custom scripts (mainly used by alias of all sorts).
++ `useful-conf` some stuff that can't really be automated by some ways.
 
 # Installation
 
@@ -20,15 +19,4 @@ Clone the repo and do :
 And boom !
 
 # Plugins used
-
 + **ZSH**: [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-+ **tmux**: [powerline](https://github.com/Lokaltog/powerline)
-
-
-# Stuff to do
-
-- [ ] Add some package managers
-    + [ ] npm
-    + [ ] rbenv/ruby-build
-    + [ ] Homebrew
-- [ ] Try to embrace brewcask
