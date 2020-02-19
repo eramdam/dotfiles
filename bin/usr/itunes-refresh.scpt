@@ -1,5 +1,5 @@
 on run (argv)
-	tell application "iTunes"
+	tell application "Music"
 		set filename to POSIX file (argv's item 1 as string) as alias
 		try
 			set trackRef to (add filename)
