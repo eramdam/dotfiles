@@ -262,6 +262,14 @@ toolbarbutton#alltabs-button {
      background-image: linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.2));
 }
 
+.tabbrowser-tab .tab-bottom-line {
+  margin-bottom: 0 !important;
+  margin-top: -4px !important;
+  opacity: 0.5;
+  height: 4px !important;
+  background: linear-gradient(transparent 40%, var(--identity-tab-color) 90%) !important;
+}
+
 .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
  background-color: transparent;
  background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.1))
