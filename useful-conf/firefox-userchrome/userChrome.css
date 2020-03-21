@@ -24,11 +24,6 @@ toolbarbutton#alltabs-button {
 
 
 
-:-moz-any(.tabs-newtab-button, #new-tab-button, #alltabs-button) .toolbarbutton-icon {
-  transform: scale(0.5, 0.5) !important;
-  margin-top: 1px !important;
-}
-
 
 /* Padding/border adjustements */
 #nav-bar {
@@ -38,12 +33,7 @@ toolbarbutton#alltabs-button {
 
 /* 'Show your bookmarks' toolbar button. */
 #bookmarks-menu-button {
-  list-style-image: url('bookmarks.svg') !important;
-}
-
-/* Shadow above content */
-#navigator-toolbox {
-  box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.2) !important;
+  /*   list-style-image: url('bookmarks.svg') !important; */
 }
 
 /* Hide the back button unless we can actually go back. */
@@ -54,13 +44,6 @@ toolbarbutton#alltabs-button {
 /* Hide the forward button always */
 #forward-button {
   display: none;
-}
-
-/* Hide/re-order the menu button. */
-#PanelUI-button {
-  /*   overflow: hidden; */
-  /*   width: 0; */
-  /*   display: none !important; */
 }
 
 #appMenu-notification-popup {
@@ -94,6 +77,7 @@ toolbarbutton#alltabs-button {
   box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.33);
 }
 
+/* Remove line above tabs */
 .tab-line {
   display: none !important;
 }
@@ -171,8 +155,10 @@ toolbarbutton#alltabs-button {
 
 
 /* White GitHub favicon */
-.tabbrowser-tab[image^="data:image/x-icon;base64,AAABAAIAEBAAAAEAIAAoBQAAJgAAACAgAAABACAAKBQAAE4FAAAoAAAAEAAAACAAAAABACAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABERE3YTExPFDg4OEgAAAAAAAAAADw8PERERFLETExNpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQUFJYTExT8ExMU7QAAABkAAAAAAAAAAAAAABgVFRf/FRUX/xERE4UAAAAAAAAAAAAAAAAAAAAAAAAAABEREsETExTuERERHhAQEBAAAAAAAAAAAAAAAAAAAAANExMU9RUVF/8VFRf/EREUrwAAAAAAAAAAAAAAABQUFJkVFRf/BgYRLA4ODlwPDw/BDw8PIgAAAAAAAAAADw8PNBAQEP8VFRf/FRUX/xUVF/8UFBSPAAAAABAQEDAPDQ//AAAA"] .tab-icon-image {
-  filter: invert(1.0) !important;
+@media (prefers-color-scheme: dark) {
+  .tabbrowser-tab[image^="data:image/x-icon;base64,AAABAAIAEBAAAAEAIAAoBQAAJgAAACAgAAABACAAKBQAAE4FAAAoAAAAEAAAACAAAAABACAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABERE3YTExPFDg4OEgAAAAAAAAAADw8PERERFLETExNpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABQUFJYTExT8ExMU7QAAABkAAAAAAAAAAAAAABgVFRf/FRUX/xERE4UAAAAAAAAAAAAAAAAAAAAAAAAAABEREsETExTuERERHhAQEBAAAAAAAAAAAAAAAAAAAAANExMU9RUVF/8VFRf/EREUrwAAAAAAAAAAAAAAABQUFJkVFRf/BgYRLA4ODlwPDw/BDw8PIgAAAAAAAAAADw8PNBAQEP8VFRf/FRUX/xUVF/8UFBSPAAAAABAQEDAPDQ//AAAA"] .tab-icon-image {
+    filter: invert(1.0) !important;
+  }
 }
 
 /* Put tabs below the nav bar. */
@@ -234,10 +220,104 @@ toolbarbutton#alltabs-button {
   VIBRANCY
 **/
 
-#TabsToolbar, .tab-background, #nav-bar, .theme-dark,
-.theme-light,slider, .CodeMirror, .devtools-toolbar, .message,
-.theme-body, .table-widget-empty-text {
-  -moz-appearance: -moz-mac-vibrancy-dark !important;
+@media (prefers-color-scheme: dark) {
+
+  #TabsToolbar,
+  .tab-background,
+  #nav-bar,
+  .theme-dark,
+  .theme-light,
+  slider,
+  .CodeMirror,
+  .devtools-toolbar,
+  .message,
+  .theme-body,
+  .table-widget-empty-text {
+    -moz-appearance: -moz-mac-vibrancy-dark !important;
+  }
+
+  #TabsToolbar::before {
+    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .3));
+  }
+
+  .tabbrowser-tab .tab-background {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, .2));
+  }
+
+  .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .1))
+  }
+}
+
+:root {
+  --custom-window-color-inactive: red !important;
+  ;
+}
+
+@media (prefers-color-scheme: light) {
+
+  #TabsToolbar,
+  .tab-background,
+  #nav-bar,
+  .theme-dark,
+  .theme-light,
+  slider,
+  .CodeMirror,
+  .devtools-toolbar,
+  .message,
+  .theme-body,
+  .table-widget-empty-text {
+    -moz-appearance: -moz-mac-vibrancy-light !important;
+  }
+
+
+
+  .tab-background :-moz-window-inactive,
+  .theme-dark :-moz-window-inactive,
+  .theme-light :-moz-window-inactive,
+  slider :-moz-window-inactive,
+  .CodeMirror :-moz-window-inactive,
+  .devtools-toolbar :-moz-window-inactive,
+  .message :-moz-window-inactive,
+  .theme-body :-moz-window-inactive,
+  .table-widget-empty-text :-moz-window-inactive,
+  :-moz-window-inactive #nav-bar {
+    -moz-appearance: none !important;
+    background: #f6f6f6 !important;
+  }
+
+  #TabsToolbar :-moz-window-inactive {
+    background: #f6f6f6 !important;
+  }
+
+
+  #TabsToolbar::before {
+    background: linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .3));
+  }
+
+  .tabbrowser-tab .tab-background {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, .2));
+  }
+
+  .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .1))
+  }
+
+  .tabbrowser-tab:not([selected="true"]) :-moz-window-inactive>.tab-label-container {
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  #TabsToolbar .tabbrowser-tab:not([selected="true"]) {
+    color: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  #TabsToolbar {
+    --lwt-toolbarbutton-icon-fill: rgba(0, 0, 0, 0.9)
+  }
+
+  #TabsToolbar {
+    --lwt-background-tab-separator-color: rgba(0, 0, 0, 0.5)
+  }
 }
 
 #TabsToolbar {
@@ -250,17 +330,11 @@ toolbarbutton#alltabs-button {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0,0,0,.3);
-  background: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.3));
   right: 0;
   bottom: 0;
   z-index: -1;
 }
 
-.tabbrowser-tab .tab-background-inner {
-/*   background: rgba(0,0,0,.1); */
-     background-image: linear-gradient(rgba(255,255,255,0), rgba(0,0,0,.2));
-}
 
 .tabbrowser-tab .tab-bottom-line {
   margin-bottom: 0 !important;
@@ -271,6 +345,6 @@ toolbarbutton#alltabs-button {
 }
 
 .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
- background-color: transparent;
- background-image: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.1))
+  background-color: transparent;
+
 }
