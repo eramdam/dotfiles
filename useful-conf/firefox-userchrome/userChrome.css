@@ -14,16 +14,11 @@ toolbarbutton#alltabs-button {
   --toolbox-border-bottom-color: transparent !important;
   /* 1px line under background tabs */
   --chrome-nav-bar-controls-border-color: transparent !important;
-  /* border around url bar */
 }
 
 :root:-moz-lwtheme {
   --toolbox-border-bottom-color: rgba(0, 0, 0, 0) !important;
 }
-
-
-
-
 
 /* Padding/border adjustements */
 #nav-bar {
@@ -55,7 +50,6 @@ toolbarbutton#alltabs-button {
 #appMenu-notification-popup .panel-arrowbox {
   display: none !important;
   visibility: collapse;
-
 }
 
 /* #PanelUI-button, */
@@ -70,7 +64,7 @@ toolbarbutton#alltabs-button {
 .tabbrowser-tab::before {
   border: none !important;
   color: grey !important;
-  opacity: .2 !important;
+  opacity: 0.2 !important;
 }
 
 .tabbrowser-tab[visuallyselected="true"] {
@@ -83,30 +77,37 @@ toolbarbutton#alltabs-button {
 }
 
 /* URL Bar */
-#urlbar[focused="true"],
-#urlbar:hover,
-.searchbar-textbox:hover {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
+
+#urlbar-container {
+  --urlbar-container-height: 40px !important;
+}
+
+#urlbar {
+  --urlbar-toolbar-height: 40px !important;
+  --urlbar-height: 26px !important;
+}
+
+#urlbar.megabar > #urlbar-background {
+  opacity: 0;
   outline: none !important;
+  animation: none !important;
+  border: 0 !important;
+  top: var(--urlbar-container-height) !important;
+}
+
+.urlbarView.megabar .urlbarView-body-inner {
+  border: 0 !important;
+}
+
+#urlbar[open="true"] > #urlbar-background {
+  opacity: 1;
 }
 
 #urlbar,
 .searchbar-textbox,
 #urlbar:hover,
 .searchbar-textbox:hover {
-  background: transparent !important;
-  height: 32px !important;
-  padding: 0px !important;
   font-size: 1.1em !important;
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
-  -moz-appearance: none;
-  margin: 4px 0px !important;
-  min-height: 24px !important;
-  cursor: default;
 }
 
 /* Hide bookmark button, page actions, security labels and extension icons */
@@ -147,7 +148,6 @@ toolbarbutton#alltabs-button {
   /* Just some ridiculous size so you know it works. */
 }
 
-
 /* Hide titlebar spaces */
 .titlebar-spacer {
   display: none;
@@ -164,7 +164,6 @@ toolbarbutton#alltabs-button {
   -moz-box-ordinal-group: 0 !important;
   padding-left: 75px !important;
 }
-
 
 #navigator-toolbox[readeractive="true"] {
   box-shadow: none !important;
@@ -196,12 +195,11 @@ toolbarbutton#alltabs-button {
   padding: 0 4px;
 }
 
-
 /* Move traffic lights in the space carved above. */
 .titlebar-buttonbox-container {
   position: absolute;
   display: block;
-  margin-top: -30px;
+  margin-top: -28px;
 }
 
 #PanelUI-webext-privacy_privacy_com-browser-action-view {
@@ -213,7 +211,6 @@ toolbarbutton#alltabs-button {
 **/
 
 @media (prefers-color-scheme: dark) {
-
   #TabsToolbar,
   .tab-background,
   #nav-bar,
@@ -229,25 +226,32 @@ toolbarbutton#alltabs-button {
   }
 
   #TabsToolbar::before {
-    background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .3));
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
   }
 
   .tabbrowser-tab .tab-background {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, .2));
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.2)
+    );
   }
 
   .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .1))
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.1)
+    );
+  }
+
+  #urlbar #urlbar-background::after {
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.4)
+    );
   }
 }
 
-:root {
-  --custom-window-color-inactive: red !important;
-  ;
-}
-
 @media (prefers-color-scheme: light) {
-
   #TabsToolbar,
   .tab-background,
   #nav-bar,
@@ -258,11 +262,10 @@ toolbarbutton#alltabs-button {
   .devtools-toolbar,
   .message,
   .theme-body,
-  .table-widget-empty-text {
+  .table-widget-empty-text,
+  #urlbar #urlbar-background {
     -moz-appearance: -moz-mac-vibrancy-light !important;
   }
-
-
 
   .tab-background :-moz-window-inactive,
   .theme-dark :-moz-window-inactive,
@@ -275,28 +278,45 @@ toolbarbutton#alltabs-button {
   .table-widget-empty-text :-moz-window-inactive,
   :-moz-window-inactive #nav-bar {
     -moz-appearance: none !important;
-    background: #f6f6f6 !important;
+    background: #fdfdfd !important;
   }
 
   #TabsToolbar :-moz-window-inactive {
-    background: #f6f6f6 !important;
+    background: #fdfdfd !important;
   }
 
-
   #TabsToolbar::before {
-    background: linear-gradient(rgba(255, 255, 255, .1), rgba(255, 255, 255, .3));
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.3)
+    );
   }
 
   .tabbrowser-tab .tab-background {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, .2));
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(0, 0, 0, 0.2)
+    );
   }
 
   .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .1))
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.1)
+    );
   }
 
-  .tabbrowser-tab:not([selected="true"]) :-moz-window-inactive>.tab-label-container {
-    color: rgba(0, 0, 0, 1.0);
+  #urlbar #urlbar-background::after {
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.4)
+    );
+  }
+
+  .tabbrowser-tab:not([selected="true"])
+    :-moz-window-inactive
+    > .tab-label-container {
+    color: rgba(0, 0, 0, 1);
   }
 
   #TabsToolbar .tabbrowser-tab:not([selected="true"]) {
@@ -304,11 +324,11 @@ toolbarbutton#alltabs-button {
   }
 
   #TabsToolbar {
-    --lwt-toolbarbutton-icon-fill: rgba(0, 0, 0, 0.9)
+    --lwt-toolbarbutton-icon-fill: rgba(0, 0, 0, 0.9);
   }
 
   #TabsToolbar {
-    --lwt-background-tab-separator-color: rgba(0, 0, 0, 0.5)
+    --lwt-background-tab-separator-color: rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -318,7 +338,7 @@ toolbarbutton#alltabs-button {
 }
 
 #TabsToolbar::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -327,16 +347,17 @@ toolbarbutton#alltabs-button {
   z-index: -1;
 }
 
-
 .tabbrowser-tab .tab-bottom-line {
   margin-bottom: 0 !important;
   margin-top: -4px !important;
   opacity: 0.5;
   height: 4px !important;
-  background: linear-gradient(transparent 40%, var(--identity-tab-color) 90%) !important;
+  background: linear-gradient(
+    transparent 40%,
+    var(--identity-tab-color) 90%
+  ) !important;
 }
 
 .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
   background-color: transparent;
-
 }
