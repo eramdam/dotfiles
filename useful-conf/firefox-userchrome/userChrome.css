@@ -93,10 +93,19 @@ toolbarbutton#alltabs-button {
   animation: none !important;
   border: 0 !important;
   top: var(--urlbar-container-height) !important;
+  background: transparent !important;
+
+  position: relative;
 }
 
-.urlbarView.megabar .urlbarView-body-inner {
-  border: 0 !important;
+#urlbar.megabar > #urlbar-background::after {
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: block;
+  position: absolute;
 }
 
 #urlbar[open="true"] > #urlbar-background {
@@ -221,7 +230,8 @@ toolbarbutton#alltabs-button {
   .devtools-toolbar,
   .message,
   .theme-body,
-  .table-widget-empty-text {
+  .table-widget-empty-text,
+  #urlbar.megabar > #urlbar-background::after {
     -moz-appearance: -moz-mac-vibrancy-dark !important;
   }
 
@@ -242,13 +252,6 @@ toolbarbutton#alltabs-button {
       rgba(255, 255, 255, 0.1)
     );
   }
-
-  #urlbar #urlbar-background::after {
-    background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(0, 0, 0, 0.4)
-    );
-  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -263,7 +266,7 @@ toolbarbutton#alltabs-button {
   .message,
   .theme-body,
   .table-widget-empty-text,
-  #urlbar #urlbar-background {
+  #urlbar #urlbar-background::after {
     -moz-appearance: -moz-mac-vibrancy-light !important;
   }
 
@@ -303,13 +306,6 @@ toolbarbutton#alltabs-button {
     background-image: linear-gradient(
       rgba(255, 255, 255, 0),
       rgba(255, 255, 255, 0.1)
-    );
-  }
-
-  #urlbar #urlbar-background::after {
-    background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.4)
     );
   }
 
