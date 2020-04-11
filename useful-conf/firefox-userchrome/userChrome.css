@@ -92,12 +92,13 @@ toolbarbutton#alltabs-button {
   outline: none !important;
   animation: none !important;
   border: 0 !important;
-  top: var(--urlbar-container-height) !important;
   background: transparent !important;
+  box-shadow: none !important;
 
   position: relative;
 }
 
+#urlbar.megabar > #urlbar-background::before,
 #urlbar.megabar > #urlbar-background::after {
   content: "";
   top: 0;
@@ -106,6 +107,12 @@ toolbarbutton#alltabs-button {
   right: 0;
   display: block;
   position: absolute;
+}
+
+#urlbar.megabar > #urlbar-background::before {
+  z-index: -1;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
+  top: calc(var(--urlbar-container-height) + 10px);
 }
 
 #urlbar[open="true"] > #urlbar-background {
