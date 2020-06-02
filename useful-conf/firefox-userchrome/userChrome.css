@@ -87,7 +87,7 @@ toolbarbutton#alltabs-button {
   --urlbar-height: 26px !important;
 }
 
-#urlbar.megabar > #urlbar-background {
+#urlbar > #urlbar-background {
   opacity: 0;
   outline: none !important;
   animation: none !important;
@@ -98,8 +98,8 @@ toolbarbutton#alltabs-button {
   position: relative;
 }
 
-#urlbar.megabar > #urlbar-background::before,
-#urlbar.megabar > #urlbar-background::after {
+#urlbar > #urlbar-background::before,
+#urlbar > #urlbar-background::after {
   content: "";
   top: 0;
   left: 0;
@@ -109,7 +109,7 @@ toolbarbutton#alltabs-button {
   position: absolute;
 }
 
-#urlbar.megabar > #urlbar-background::before {
+#urlbar > #urlbar-background::before {
   z-index: -1;
   box-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
   top: calc(var(--urlbar-container-height) + 10px);
@@ -238,7 +238,7 @@ toolbarbutton#alltabs-button {
   .message,
   .theme-body,
   .table-widget-empty-text,
-  #urlbar.megabar > #urlbar-background::after {
+  #urlbar > #urlbar-background::after {
     -moz-appearance: -moz-mac-vibrancy-dark !important;
   }
 
