@@ -1,6 +1,0 @@
-#!/usr/bin/env zsh
-
-source "$DOTFILES/bin/core/utils.zsh"
-echo "${COLOR_RED}Do you really need that ?${COLOR_RESET}\n"
-echo "${COLOR_GREEN}Fine, here you go!" && \
-less "$DOTFILES/bin/usr/f/tmuxcheat.md"
