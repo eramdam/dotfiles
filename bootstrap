@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+source $PWD/utils.zsh
+
+echo '
+    __ _ _           
+   / _(_) | ___  ___ 
+  | |_| | |/ _ \/ __|
+ _|  _| | |  __/\__ \
+(_)_| |_|_|\___||___/
+'
+
+touch ~/.zshrc
+
+echo_info "Installing Homebrew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+echo_success "Homebrew installed!"
+
+echo_info "Install Homebrew packages"
+brew bundle --file=Brewfile --verbose
+echo_success "Homebrew packages installed!"
+
+echo_info "Install nvm and node"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+echo_success "nvm installed";
+
+# load nvm in current session
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# install recent node
+nvm install node

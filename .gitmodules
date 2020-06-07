@@ -1,9 +1,0 @@
-[submodule "zsh-custom/plugins/k"]
-	path = zsh-custom/plugins/k
-	url = https://github.com/supercrabtree/k
-[submodule "zsh-custom/plugins/zsh-nvm"]
-	path = zsh-custom/plugins/zsh-nvm
-	url = https://github.com/lukechilds/zsh-nvm
-[submodule "zsh-custom/plugins/zsh-autosuggestions"]
-	path = zsh-custom/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
