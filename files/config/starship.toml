@@ -1,0 +1,19 @@
+# https://starship.rs/config/
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]      # The name of the module we are configuring is "character"
+symbol = "➜"     # The "symbol" segment is being set to "➜"
+
+[aws]
+disabled = true
+
+[git_branch]
+symbol = ""
+
+[cmd_duration]
+min_time = 100
+
+[nodejs]
+symbol = "🤖 "

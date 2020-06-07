@@ -1,0 +1,74 @@
+[user]
+	email = damien.erambert@me.com
+	name = Damien Erambert
+	signingkey = 0C163F71A6C4B7E2
+[colors]
+	ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[push]
+	default = tracking
+[core]
+	excludesfile = /Users/Damien/.gitignore
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[diff]
+  # Use better prefixes than a or b for diff output
+  # c - commit (usually HEAD)
+  # i - index (staging area)
+  # w - working directory
+	mnemonicPrefix = true
+[alias]
+  # Show all local and remote branches
+	b = branch -avv
+	r = remote -vv
+	t = tag -l
+	# cool simple log
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset %C(bold blue)<%aN>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %G?'
+	lgw = log --pretty=format:'<%aN>%d %s (%cr) %G?'
+  # Remove a file from the staging area
+	unstage = reset HEAD
+  # Undo the latest commit
+	uncommit = reset --soft HEAD^
+  # simple but useful
+	st = status
+	m = merge
+	ci = commit
+	co = checkout
+  # Get the hash of the last commit
+	lci = rev-parse HEAD
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[github]
+	user = eramdam
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pager]
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX
+[fetch]
+	prune = true
+[commit]
+	gpgsign = true
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[mergetool]
+	keepBackup = false
+[diff "sopsdiffer"]
+	textconv = sops -d
+[pull]
+	rebase = false

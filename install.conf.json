@@ -12,7 +12,17 @@
     ]
   },
   {
-    "link": {}
+    "link": {
+      "~/.dotfiles": "",
+      "~/.mackup.cfg": "files/mackup.cfg",
+      "~/.gitconfig": "files/gitconfig",
+      "~/.gitignore": "files/gitignore",
+      "~/.config/fish/config.fish": {
+        "create": true,
+        "path": "files/config/fish/config.fish"
+      },
+      "~/.config/starship.toml": "files/config/starship.toml"
+    }
   },
   {
     "create": [
@@ -30,20 +40,30 @@
         "git submodule update --init --recursive",
         "Installing submodules"
       ],
-      [
-        "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"",
-        "Installing Homebrew"
-      ],
+      {
+        "command": "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"",
+        "description": "Installing Homebrew",
+        "quiet": false,
+        "stdout": true
+      },
       {
         "command": "brew bundle --file=scripts/Brewfile -v",
         "description": "Installing Homebrew packages",
         "quiet": false,
         "stdout": true
       },
-      [
-        "scripts/nvm.sh",
-        "Installing nvm and installing Node"
-      ]
+      {
+        "command": "scripts/nvm.sh",
+        "description": "Installing nvm and installing Node",
+        "quiet": false,
+        "stdout": true
+      },
+      {
+        "command": "curl -L https://get.oh-my.fish | fish",
+        "description": "Install oh my fish",
+        "quiet": false,
+        "stdout": true
+      }
     ]
   }
 ]
