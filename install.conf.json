@@ -59,11 +59,11 @@
         "stdout": true
       },
       {
-        "command": "curl -L https://get.oh-my.fish | fish",
-        "description": "Install oh my fish",
-        "quiet": false,
-        "stdout": true
-      }
+        "command": "curl -L https://get.oh-my.fish > /tmp/omf-install; fish /tmp/omf-install --noninteractive",
+        "description": "Install oh my fish"
+      },
+      [ "echo `which fish` | sudo tee -a /etc/shells", "Add fish to default shells"],
+      [ "chsh -s `which fish`", "Set fish as default shell"]
     ]
   }
 ]
