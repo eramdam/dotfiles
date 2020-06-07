@@ -1,0 +1,49 @@
+[
+  {
+    "defaults": {
+      "link": {
+        "relink": true
+      }
+    }
+  },
+  {
+    "clean": [
+      "~"
+    ]
+  },
+  {
+    "link": {}
+  },
+  {
+    "create": [
+      "~/.zshrc"
+    ]
+  },
+  {
+    "shell": [
+      {
+        "command": "./scripts/hello.sh",
+        "stdout": true,
+        "description": ""
+      },
+      [
+        "git submodule update --init --recursive",
+        "Installing submodules"
+      ],
+      [
+        "/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)\"",
+        "Installing Homebrew"
+      ],
+      {
+        "command": "brew bundle --file=scripts/Brewfile -v",
+        "description": "Installing Homebrew packages",
+        "quiet": false,
+        "stdout": true
+      },
+      [
+        "scripts/nvm.sh",
+        "Installing nvm and installing Node"
+      ]
+    ]
+  }
+]
