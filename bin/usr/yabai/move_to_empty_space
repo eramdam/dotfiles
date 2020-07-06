@@ -1,0 +1,15 @@
+#! /usr/bin/env sh
+
+firstEmptySpace=$(yabai -m query --spaces --display | jq --raw-output "map(select(.windows == []).index) | first")
+
+echo $firstEmptySpace
+
+if [ $firstEmptySpace == "null" ]
+then
+echo "need new space"
+yabai -m space --create;
+firstEmptySpace="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')"
+fi
+
+yabai -m window --space "${firstEmptySpace}";
+yabai -m space --focus "${firstEmptySpace}";

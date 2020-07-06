@@ -1,0 +1,8 @@
+#! /usr/bin/env sh
+
+currentIndex=$(yabai -m query --spaces --space | jq '.index')
+indices=$(yabai -m query --spaces | jq --raw-output "map(select(.windows == []).index) | reverse | @tsv")
+for index in $indices; do
+  yabai -m space --focus $index; yabai -m space --destroy;
+done
+yabai -m space --focus $currentIndex
