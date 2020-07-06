@@ -52,11 +52,14 @@ toolbarbutton#alltabs-button {
   visibility: collapse;
 }
 
-/* #PanelUI-button, */
 #customization-panel-container,
 #customization-panelWrapper .panel-arrow {
   -moz-box-ordinal-group: 0 !important;
   margin-right: -2px !important;
+}
+
+#PanelUI-button {
+  border: none !important;
 }
 
 /* Tab borders stuff */
@@ -84,7 +87,7 @@ toolbarbutton#alltabs-button {
 
 #urlbar {
   --urlbar-toolbar-height: 40px !important;
-  --urlbar-height: 26px !important;
+  /* --urlbar-height: 26px !important; */
 }
 
 #urlbar > #urlbar-background {
@@ -140,11 +143,6 @@ toolbarbutton#alltabs-button {
 #identity-box {
   border: 0 !important;
   padding: 0 4px !important;
-}
-
-#identity-box #identity-icon {
-  margin-right: -20px !important;
-  opacity: 0 !important;
 }
 
 /* Spacing. */
@@ -277,24 +275,6 @@ toolbarbutton#alltabs-button {
     -moz-appearance: -moz-mac-vibrancy-light !important;
   }
 
-  .tab-background :-moz-window-inactive,
-  .theme-dark :-moz-window-inactive,
-  .theme-light :-moz-window-inactive,
-  slider :-moz-window-inactive,
-  .CodeMirror :-moz-window-inactive,
-  .devtools-toolbar :-moz-window-inactive,
-  .message :-moz-window-inactive,
-  .theme-body :-moz-window-inactive,
-  .table-widget-empty-text :-moz-window-inactive,
-  :-moz-window-inactive #nav-bar {
-    -moz-appearance: none !important;
-    background: #fdfdfd !important;
-  }
-
-  #TabsToolbar :-moz-window-inactive {
-    background: #fdfdfd !important;
-  }
-
   #TabsToolbar::before {
     background: linear-gradient(
       rgba(255, 255, 255, 0.1),
@@ -350,17 +330,21 @@ toolbarbutton#alltabs-button {
   z-index: -1;
 }
 
+#back-button > .toolbarbutton-icon {
+  --backbutton-background: transparent;
+  --toolbarbutton-inner-padding: 6px !important;
+  border: none !important;
+  padding: var(--toolbarbutton-inner-padding) !important;
+  border-radius: var(--toolbarbutton-border-radius) !important;
+  width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+  height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+}
+
+#back-button > .toolbarbutton-icon:hover {
+  --backbutton-background: --toolbarbutton-hover-background;
+}
+
 .tabbrowser-tab .tab-bottom-line {
   margin-bottom: 0 !important;
   margin-top: -4px !important;
-  opacity: 0.5;
-  height: 4px !important;
-  background: linear-gradient(
-    transparent 40%,
-    var(--identity-tab-color) 90%
-  ) !important;
-}
-
-.tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
-  background-color: transparent;
 }
