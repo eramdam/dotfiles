@@ -41,17 +41,6 @@ toolbarbutton#alltabs-button {
   display: none;
 }
 
-#appMenu-notification-popup {
-  /*   position: fixed; */
-  margin-top: 90px;
-  margin-right: 20px !important;
-}
-
-#appMenu-notification-popup .panel-arrowbox {
-  display: none !important;
-  visibility: collapse;
-}
-
 #customization-panel-container,
 #customization-panelWrapper .panel-arrow {
   -moz-box-ordinal-group: 0 !important;
