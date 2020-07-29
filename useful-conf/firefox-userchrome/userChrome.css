@@ -93,10 +93,12 @@ toolbarbutton#alltabs-button {
 
 #urlbar > #urlbar-background {
   opacity: 0;
+  border: 0 !important;
+  outline: 0 !important;
   animation: none !important;
 }
 
-#urlbar > #urlbar-background::before,
+/* #urlbar > #urlbar-background::before,
 #urlbar > #urlbar-background::after {
   content: "";
   top: 0;
@@ -105,16 +107,16 @@ toolbarbutton#alltabs-button {
   right: 0;
   display: block;
   position: absolute;
-}
+} */
 
-#urlbar > #urlbar-background::before {
+/* #urlbar > #urlbar-background::before {
   z-index: -1;
   box-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
   top: calc(var(--urlbar-container-height) + 10px);
-}
+} */
 
 #urlbar[open="true"] > #urlbar-background {
-  opacity: 1;
+  opacity: .95;
 }
 
 #urlbar,
