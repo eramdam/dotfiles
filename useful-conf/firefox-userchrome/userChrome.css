@@ -1,7 +1,7 @@
 /**
  * Most of the UI modifications come from https://www.reddit.com/r/FirefoxCSS/comments/a9vgxl/minimalist_theme/ by u/griam
  */
-
+:root{ background: transparent !important }
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 
 toolbarbutton#alltabs-button {
@@ -79,7 +79,8 @@ toolbarbutton#alltabs-button {
   /* --urlbar-height: 26px !important; */
 }
 
-#urlbar > #urlbar-background {
+/* Disabled until vibrancy is fixed on 79+ */
+/* #urlbar > #urlbar-background {
   opacity: 0;
   outline: none !important;
   animation: none !important;
@@ -88,6 +89,11 @@ toolbarbutton#alltabs-button {
   box-shadow: none !important;
 
   position: relative;
+} */
+
+#urlbar > #urlbar-background {
+  opacity: 0;
+  animation: none !important;
 }
 
 #urlbar > #urlbar-background::before,
