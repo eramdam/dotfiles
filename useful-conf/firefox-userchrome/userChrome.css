@@ -236,6 +236,11 @@ toolbarbutton#alltabs-button {
   #urlbar > #urlbar-background::after {
     -moz-appearance: -moz-mac-vibrancy-dark !important;
   }
+
+  #TabsToolbar::before {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+  }
+
   .tabbrowser-tab .tab-background {
     background-image: linear-gradient(
       rgba(255, 255, 255, 0),
