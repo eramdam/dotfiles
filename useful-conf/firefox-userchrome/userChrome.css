@@ -1,34 +1,14 @@
 /**
  * Most of the UI modifications come from https://www.reddit.com/r/FirefoxCSS/comments/a9vgxl/minimalist_theme/ by u/griam
  */
-:root{ background: transparent !important }
+:root {
+  background: transparent !important;
+}
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 
-toolbarbutton#alltabs-button {
-  -moz-binding: url("userChrome.xml#js");
-}
-
-:root {
-  --tabs-border: transparent !important;
-  /* active tab left & right borders - not working in 58?*/
-  --toolbox-border-bottom-color: transparent !important;
-  /* 1px line under background tabs */
-  --chrome-nav-bar-controls-border-color: transparent !important;
-}
-
-:root:-moz-lwtheme {
-  --toolbox-border-bottom-color: rgba(0, 0, 0, 0) !important;
-}
-
-/* Padding/border adjustements */
-#nav-bar {
-  border: none !important;
-  padding: 0px 8px !important;
-}
-
-/* 'Show your bookmarks' toolbar button. */
-#bookmarks-menu-button {
-  /*   list-style-image: url('bookmarks.svg') !important; */
+/* Slightly darker separator between UI and content in light mode */
+html:not([lwthemetextcolor="bright"]) #navigator-toolbox {
+  --chrome-content-separator-color: rgba(0,0,0,.2);
 }
 
 /* Hide the back button unless we can actually go back. */
@@ -41,12 +21,12 @@ toolbarbutton#alltabs-button {
   display: none;
 }
 
-#customization-panel-container,
+/* Hide the arrow of the overflow menu box when customizing since it's too far from its target to not look weird */
 #customization-panelWrapper .panel-arrow {
-  -moz-box-ordinal-group: 0 !important;
-  margin-right: -2px !important;
+  display: none !important;
 }
 
+/* Hide border of the menu button on the right */
 #PanelUI-button {
   border: none !important;
 }
@@ -68,29 +48,7 @@ toolbarbutton#alltabs-button {
   display: none !important;
 }
 
-/* URL Bar */
-
-#urlbar-container {
-  --urlbar-container-height: 40px !important;
-}
-
-#urlbar {
-  --urlbar-toolbar-height: 40px !important;
-  /* --urlbar-height: 26px !important; */
-}
-
-/* Disabled until vibrancy is fixed on 79+ */
-/* #urlbar > #urlbar-background {
-  opacity: 0;
-  outline: none !important;
-  animation: none !important;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-
-  position: relative;
-} */
-
+/* Hide background of urlbar */
 #urlbar > #urlbar-background {
   opacity: 0;
   border: 0 !important;
@@ -98,27 +56,12 @@ toolbarbutton#alltabs-button {
   animation: none !important;
 }
 
-/* #urlbar > #urlbar-background::before,
-#urlbar > #urlbar-background::after {
-  content: "";
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: block;
-  position: absolute;
-} */
-
-/* #urlbar > #urlbar-background::before {
-  z-index: -1;
-  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.2);
-  top: calc(var(--urlbar-container-height) + 10px);
-} */
-
+/* Slightly transparent background for urlbar when opened */
 #urlbar[open="true"] > #urlbar-background {
-  opacity: .95;
+  opacity: 0.95;
 }
 
+/* Reduce size of text in urlbar */
 #urlbar,
 .searchbar-textbox,
 #urlbar:hover,
@@ -127,7 +70,7 @@ toolbarbutton#alltabs-button {
 }
 
 /* Hide bookmark button, page actions, security labels and extension icons */
-#star-button-box,
+#star-button-box, /* Bookmark button */
 #pageActionButton,
 #blocked-permissions-container,
 #identity-icon-labels,
@@ -136,27 +79,9 @@ toolbarbutton#alltabs-button {
   background: transparent !important;
 }
 
-/* Borders inside URL bar */
-#identity-box {
-  border: 0 !important;
-  padding: 0 4px !important;
-}
-
-/* Spacing. */
-#sToolbar .titlebar-placeholder[type="pre-tabs"] {
-  width: 1.22em !important;
-  border-right: none !important;
-}
-
-.titlebar-placeholder[type="post-tabs"] {
-  width: 8px !important;
-}
-
+/* Hide the bookmarks bar */
 #PersonalToolbar {
-  max-height: none !important;
-  /* Otherwise it's limited to 4em */
-  height: 2.5em;
-  /* Just some ridiculous size so you know it works. */
+  display: none !important;
 }
 
 /* Hide titlebar spaces */
@@ -167,7 +92,6 @@ toolbarbutton#alltabs-button {
 /* Put tabs below the nav bar. */
 #titlebar {
   -moz-box-ordinal-group: 1 !important;
-  /*   background: var(--toolbar-bgcolor) !important; */
 }
 
 /* Put nav bar above the tab bar and make a space for traffic lights. */
@@ -176,50 +100,77 @@ toolbarbutton#alltabs-button {
   padding-left: 75px !important;
 }
 
-#navigator-toolbox[readeractive="true"] {
-  box-shadow: none !important;
-}
-
-#navigator-toolbox[readeractive="true"]::after {
-  height: 0 !important;
-}
-
+/* Hide reader mode button until active  */
 #reader-mode-button {
   opacity: 0 !important;
   visibility: collapse !important;
 }
-
 #reader-mode-button[readeractive="true"] {
   opacity: 1 !important;
   visibility: visible !important;
 }
 
+/* Hide separator between address bar and right menu */
 #pageActionSeparator {
   opacity: 0 !important;
   margin-right: 2px !important;
   margin-left: 2px !important;
 }
 
-#tracking-protection-icon-container {
-  border-image-slice: initial;
-  border: none;
-  padding: 0 4px;
-}
-
 /* Move traffic lights in the space carved above. */
 .titlebar-buttonbox-container {
   position: absolute;
   display: block;
-  margin-top: -28px;
+  margin-top: -25px;
 }
 
-#PanelUI-webext-privacy_privacy_com-browser-action-view {
-  min-width: 500px !important;
+/* Make the back button look like a regular button */
+#back-button > .toolbarbutton-icon {
+  --backbutton-background: transparent;
+  --backbutton-hover-background: var(--toolbarbutton-hover-background);
+  --toolbarbutton-inner-padding: 6px !important;
+  border: none !important;
+  padding: var(--toolbarbutton-inner-padding) !important;
+  border-radius: var(--toolbarbutton-border-radius) !important;
+  width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+  height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
 }
+
+/* Remove padding from context navigation icons in right-click menu */
+#context-navigation {
+  margin-top: -4px !important;
+}
+
+/* Make icons before urlbar slightly smaller */
+.sharing-icon, #identity-icon, #permissions-granted-icon, #tracking-protection-icon, .notification-anchor-icon, #blocked-permissions-container > .blocked-permission-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
 
 /**
-  VIBRANCY
-**/
+ * 
+ * Dark/Light theme overrides
+ * 
+ */
+
+
+/* Allows for a subtle gradient behind tabs */
+#TabsToolbar {
+  position: relative;
+  z-index: 1;
+  background: var(--backbutton-background);
+}
+#TabsToolbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
 
 @media (prefers-color-scheme: dark) {
   #TabsToolbar,
@@ -256,92 +207,67 @@ toolbarbutton#alltabs-button {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  #TabsToolbar,
-  .tab-background,
-  #nav-bar,
-  .theme-dark,
-  .theme-light,
-  slider,
-  .CodeMirror,
-  .devtools-toolbar,
-  .message,
-  .theme-body,
-  .table-widget-empty-text,
-  #urlbar #urlbar-background::after {
-    -moz-appearance: -moz-mac-vibrancy-light !important;
-  }
-
-  #TabsToolbar::before {
-    background: linear-gradient(
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.3)
-    );
-  }
-
-  .tabbrowser-tab .tab-background {
-    background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(0, 0, 0, 0.2)
-    );
-  }
-
-  .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
-    background-image: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0.1)
-    );
-  }
-
-  .tabbrowser-tab:not([selected="true"])
-    :-moz-window-inactive
-    > .tab-label-container {
-    color: rgba(0, 0, 0, 1);
-  }
-
-  #TabsToolbar .tabbrowser-tab:not([selected="true"]) {
-    color: rgba(0, 0, 0, 0.9) !important;
-  }
-
-  #TabsToolbar {
-    --lwt-toolbarbutton-icon-fill: rgba(0, 0, 0, 0.9);
-  }
-
-  #TabsToolbar {
-    --lwt-background-tab-separator-color: rgba(0, 0, 0, 0.5);
-  }
+html:not([lwthemetextcolor="bright"]) #TabsToolbar,
+html:not([lwthemetextcolor="bright"]) .tab-background,
+html:not([lwthemetextcolor="bright"]) #nav-bar,
+html:not([lwthemetextcolor="bright"]) .theme-dark,
+html:not([lwthemetextcolor="bright"]) .theme-light,
+html:not([lwthemetextcolor="bright"]) slider,
+html:not([lwthemetextcolor="bright"]) .CodeMirror,
+html:not([lwthemetextcolor="bright"]) .devtools-toolbar,
+html:not([lwthemetextcolor="bright"]) .message,
+html:not([lwthemetextcolor="bright"]) .theme-body,
+html:not([lwthemetextcolor="bright"]) .table-widget-empty-text,
+html:not([lwthemetextcolor="bright"]) #urlbar #urlbar-background::after {
+  -moz-appearance: -moz-mac-vibrancy-light !important;
 }
 
-#TabsToolbar {
-  position: relative;
-  z-index: 1;
+/* Fix a few colors in light mode */
+html:not([lwthemetextcolor="bright"]) .tabbrowser-tab:not([selected="true"])
+  :-moz-window-inactive
+  > .tab-label-container {
+  color: rgba(0, 0, 0, 1);
+}
+html:not([lwthemetextcolor="bright"]) #TabsToolbar .tabbrowser-tab:not([selected="true"]) {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+html:not([lwthemetextcolor="bright"]) #TabsToolbar {
+  --lwt-toolbarbutton-icon-fill: rgba(0, 0, 0, 0.9);
+}
+html:not([lwthemetextcolor="bright"]) #TabsToolbar {
+  --lwt-background-tab-separator-color: rgba(0, 0, 0, 0.5);
 }
 
-#TabsToolbar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
+
+html[lwthemetextcolor="bright"] #TabsToolbar,
+html[lwthemetextcolor="bright"] .tab-background,
+html[lwthemetextcolor="bright"] #nav-bar,
+html[lwthemetextcolor="bright"] .theme-dark,
+html[lwthemetextcolor="bright"] .theme-light,
+html[lwthemetextcolor="bright"] slider,
+html[lwthemetextcolor="bright"] .CodeMirror,
+html[lwthemetextcolor="bright"] .devtools-toolbar,
+html[lwthemetextcolor="bright"] .message,
+html[lwthemetextcolor="bright"] .theme-body,
+html[lwthemetextcolor="bright"] .table-widget-empty-text,
+html[lwthemetextcolor="bright"] #urlbar > #urlbar-background::after {
+  -moz-appearance: -moz-mac-vibrancy-dark !important;
 }
 
-#back-button > .toolbarbutton-icon {
-  --backbutton-background: transparent;
-  --toolbarbutton-inner-padding: 6px !important;
-  border: none !important;
-  padding: var(--toolbarbutton-inner-padding) !important;
-  border-radius: var(--toolbarbutton-border-radius) !important;
-  width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
-  height: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+html[lwthemetextcolor="bright"] #TabsToolbar::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
 }
 
-#back-button > .toolbarbutton-icon:hover {
-  --backbutton-background: --toolbarbutton-hover-background;
+html[lwthemetextcolor="bright"] .tabbrowser-tab .tab-background {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0.2)
+  );
 }
 
-.tabbrowser-tab .tab-bottom-line {
-  margin-bottom: 0 !important;
-  margin-top: -4px !important;
+html[lwthemetextcolor="bright"] .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.1)
+  );
 }
