@@ -3,12 +3,15 @@
  */
 :root {
   background: transparent !important;
+
+  --urlbar-bg: transparent;
+  --urlbar-border-color: transparent;
 }
 @namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
 
 /* Slightly darker separator between UI and content in light mode */
 html:not([lwthemetextcolor="bright"]) #navigator-toolbox {
-  --chrome-content-separator-color: rgba(0,0,0,.2);
+  --chrome-content-separator-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Hide the back button unless we can actually go back. */
@@ -51,14 +54,27 @@ html:not([lwthemetextcolor="bright"]) #navigator-toolbox {
 /* Hide background of urlbar */
 #urlbar > #urlbar-background {
   opacity: 0;
-  border: 0 !important;
-  outline: 0 !important;
-  animation: none !important;
 }
 
 /* Slightly transparent background for urlbar when opened */
 #urlbar[open="true"] > #urlbar-background {
-  opacity: 0.95;
+  opacity: 1 !important;
+  background: transparent !important;
+  backdrop-filter: blur(10px) !important;
+  overflow: hidden;
+  position: relative;
+  border-color: var(--urlbar-border-color) !important;
+}
+
+#urlbar[open="true"] > #urlbar-background::after {
+  content: '';
+  background: var(--urlbar-bg);
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* Reduce size of text in urlbar */
@@ -142,18 +158,21 @@ html:not([lwthemetextcolor="bright"]) #navigator-toolbox {
 }
 
 /* Make icons before urlbar slightly smaller */
-.sharing-icon, #identity-icon, #permissions-granted-icon, #tracking-protection-icon, .notification-anchor-icon, #blocked-permissions-container > .blocked-permission-icon {
+.sharing-icon,
+#identity-icon,
+#permissions-granted-icon,
+#tracking-protection-icon,
+.notification-anchor-icon,
+#blocked-permissions-container > .blocked-permission-icon {
   width: 14px !important;
   height: 14px !important;
 }
-
 
 /**
  * 
  * Dark/Light theme overrides
  * 
  */
-
 
 /* Allows for a subtle gradient behind tabs */
 #TabsToolbar {
@@ -171,7 +190,6 @@ html:not([lwthemetextcolor="bright"]) #navigator-toolbox {
   z-index: -1;
 }
 
-
 @media (prefers-color-scheme: dark) {
   #TabsToolbar,
   .tab-background,
@@ -184,7 +202,7 @@ html:not([lwthemetextcolor="bright"]) #navigator-toolbox {
   .message,
   .theme-body,
   .table-widget-empty-text,
-  #urlbar > #urlbar-background::after {
+  #main-window {
     -moz-appearance: -moz-mac-vibrancy-dark !important;
   }
 
@@ -207,6 +225,39 @@ html:not([lwthemetextcolor="bright"]) #navigator-toolbox {
   }
 }
 
+@media (prefers-color-scheme: light) {
+  #TabsToolbar,
+  .tab-background,
+  #nav-bar,
+  .theme-dark,
+  .theme-light,
+  slider,
+  .CodeMirror,
+  .devtools-toolbar,
+  .message,
+  .theme-body,
+  .table-widget-empty-text,
+  #main-window {
+    -moz-appearance: -moz-mac-vibrancy-light !important;
+  }
+
+  /* Fix a few colors in light mode */
+  .tabbrowser-tab:not([selected="true"])
+    :-moz-window-inactive
+    > .tab-label-container {
+    color: rgba(0, 0, 0, 1);
+  }
+  #TabsToolbar .tabbrowser-tab:not([selected="true"]) {
+    color: rgba(0, 0, 0, 0.9) !important;
+  }
+  #TabsToolbar {
+    --lwt-toolbarbutton-icon-fill: rgba(0, 0, 0, 0.9);
+  }
+  #TabsToolbar {
+    --lwt-background-tab-separator-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
 html:not([lwthemetextcolor="bright"]) #TabsToolbar,
 html:not([lwthemetextcolor="bright"]) .tab-background,
 html:not([lwthemetextcolor="bright"]) #nav-bar,
@@ -217,18 +268,20 @@ html:not([lwthemetextcolor="bright"]) .CodeMirror,
 html:not([lwthemetextcolor="bright"]) .devtools-toolbar,
 html:not([lwthemetextcolor="bright"]) .message,
 html:not([lwthemetextcolor="bright"]) .theme-body,
-html:not([lwthemetextcolor="bright"]) .table-widget-empty-text,
-html:not([lwthemetextcolor="bright"]) #urlbar #urlbar-background::after {
+html:not([lwthemetextcolor="bright"]) .table-widget-empty-text {
   -moz-appearance: -moz-mac-vibrancy-light !important;
 }
 
 /* Fix a few colors in light mode */
-html:not([lwthemetextcolor="bright"]) .tabbrowser-tab:not([selected="true"])
+html:not([lwthemetextcolor="bright"])
+  .tabbrowser-tab:not([selected="true"])
   :-moz-window-inactive
   > .tab-label-container {
   color: rgba(0, 0, 0, 1);
 }
-html:not([lwthemetextcolor="bright"]) #TabsToolbar .tabbrowser-tab:not([selected="true"]) {
+html:not([lwthemetextcolor="bright"])
+  #TabsToolbar
+  .tabbrowser-tab:not([selected="true"]) {
   color: rgba(0, 0, 0, 0.9) !important;
 }
 html:not([lwthemetextcolor="bright"]) #TabsToolbar {
@@ -237,7 +290,6 @@ html:not([lwthemetextcolor="bright"]) #TabsToolbar {
 html:not([lwthemetextcolor="bright"]) #TabsToolbar {
   --lwt-background-tab-separator-color: rgba(0, 0, 0, 0.5);
 }
-
 
 html[lwthemetextcolor="bright"] #TabsToolbar,
 html[lwthemetextcolor="bright"] .tab-background,
@@ -249,8 +301,7 @@ html[lwthemetextcolor="bright"] .CodeMirror,
 html[lwthemetextcolor="bright"] .devtools-toolbar,
 html[lwthemetextcolor="bright"] .message,
 html[lwthemetextcolor="bright"] .theme-body,
-html[lwthemetextcolor="bright"] .table-widget-empty-text,
-html[lwthemetextcolor="bright"] #urlbar > #urlbar-background::after {
+html[lwthemetextcolor="bright"] .table-widget-empty-text {
   -moz-appearance: -moz-mac-vibrancy-dark !important;
 }
 
@@ -259,15 +310,25 @@ html[lwthemetextcolor="bright"] #TabsToolbar::before {
 }
 
 html[lwthemetextcolor="bright"] .tabbrowser-tab .tab-background {
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0),
-    rgba(0, 0, 0, 0.2)
-  );
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.2));
 }
 
-html[lwthemetextcolor="bright"] .tabbrowser-tab[visuallyselected="true"] .tab-background-inner {
+html[lwthemetextcolor="bright"]
+  .tabbrowser-tab[visuallyselected="true"]
+  .tab-background-inner {
   background-image: linear-gradient(
     rgba(255, 255, 255, 0),
     rgba(255, 255, 255, 0.1)
   );
+}
+
+html:not([lwthemetextcolor="bright"]) {
+  --urlbar-bg: rgba(255,255,255,.8);
+  --urlbar-border-color: rgba(0,0,0,.2);
+}
+
+
+html[lwthemetextcolor="bright"] {
+  --urlbar-bg: hsla(240, 4%, 23%, 0.8);
+  --urlbar-border-color: var(--lwt-toolbar-field-border-color);
 }
